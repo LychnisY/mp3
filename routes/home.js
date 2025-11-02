@@ -1,11 +1,7 @@
-module.exports = function (router) {
+import express from 'express';
+import { ok } from '../utils/response.js';
 
-    var homeRoute = router.route('/');
+const router = express.Router();
+router.get('/', (req, res) => ok(res, { service: 'mp-task-api' }, 'API is up'));
 
-    homeRoute.get(function (req, res) {
-        var connectionString = process.env.TOKEN;
-        res.json({ message: 'My connection string is ' + connectionString });
-    });
-
-    return router;
-}
+export default router;
